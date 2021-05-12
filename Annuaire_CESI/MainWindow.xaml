@@ -1,0 +1,60 @@
+﻿<Window x:Class="Annuaire_CESI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Annuaire_CESI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <UniformGrid Grid.Row="0" Grid.Column="0" Rows="2">
+                <UniformGrid Columns="2">
+                    <Label Content="Filtre :"></Label>
+                    <ComboBox x:Name="CBTypeFiltre" ></ComboBox>
+                </UniformGrid>
+                <TextBox x:Name="TBFiltre"></TextBox>
+            </UniformGrid>
+
+            <UniformGrid Grid.Row="1" Grid.Column="0" Columns="2" Height="30">
+                <Button Content="Ajouter un utilisateur"></Button>
+                <Button Content="Ajouter un utilisateur random (API)"></Button>
+            </UniformGrid>
+            
+        </Grid>
+
+        <GroupBox Grid.Row="1" Header="Liste des Contacts">
+            <DataGrid x:Name="DataGridCommande"
+                      HeadersVisibility="Column" AutoGenerateColumns="False" 
+                      AlternatingRowBackground="LightSteelBlue"  ColumnWidth="*" 
+                      CanUserResizeColumns="True" CanUserAddRows="False"
+                      IsReadOnly="True">
+                <!-- Nom, prénom, téléphone, service, date d’entrée dans l’entreprise -->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Nom}" Header="Nom" />
+                    <DataGridTextColumn Binding="{Binding Prenom}" Header="Prénom"/>
+                    <DataGridTextColumn Binding="{Binding Telephone}" Header="Telephone" />
+                    <DataGridTextColumn Binding="{Binding Service}" Header="Service" />
+                    <DataGridTextColumn Binding="{Binding DateEntree}" Header="Date d'entrée" />
+                </DataGrid.Columns>
+                
+            </DataGrid>
+        </GroupBox>
+        
+    </Grid>
+</Window>
