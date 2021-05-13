@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Annuaire_CESI.SQLFactory;
+using Annuaire_CESI.SQLFactory.Factorys;
 
 namespace Annuaire_CESI
 {
@@ -23,6 +25,37 @@ namespace Annuaire_CESI
         public MainWindow()
         {
             InitializeComponent();
+
+
+            using (ContexteSQL db = new ContexteSQL())
+            {
+                db.Contact.Add(new Contact()
+                {
+                    Nom = "ah",
+                    Prenom = "oh",
+                    DateEntree = DateTime.Now,
+                    Service = "service 2",
+                    Telephone = "02 35 23 44 53"
+                }) ;
+
+                db.SaveChanges();
+
+            
+
+            }
+
+
+
+
+
+            GetFactory factory = null;
+
+            factory = new SQLFactory.Factorys.GetFactory();
+
+            SQLFactory.Requete requete = factory.CreerRequete();
+
+            DataGridCommande.ItemsSource = requete.ResultatGet;
+            
         }
     }
 }

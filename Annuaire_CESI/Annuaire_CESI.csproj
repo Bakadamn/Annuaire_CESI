@@ -104,6 +104,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ContexteSQL.cs" />
+    <Compile Include="SQLFactory\Factorys\GetFactory.cs" />
+    <Compile Include="SQLFactory\Requete.cs" />
+    <Compile Include="SQLFactory\RequeteFactory.cs" />
+    <Compile Include="SQLFactory\Requetes\Get.cs" />
+    <Compile Include="SQLFactory\TypeRequete.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQLInitialisation.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
