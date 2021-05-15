@@ -105,11 +105,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ContexteSQL.cs" />
+    <Compile Include="SQLFactory\Factorys\AddFactory.cs" />
+    <Compile Include="SQLFactory\Factorys\GetByFactory.cs" />
     <Compile Include="SQLFactory\Factorys\GetFactory.cs" />
     <Compile Include="SQLFactory\Requete.cs" />
     <Compile Include="SQLFactory\RequeteFactory.cs" />
+    <Compile Include="SQLFactory\Requetes\Add.cs" />
     <Compile Include="SQLFactory\Requetes\Get.cs" />
+    <Compile Include="SQLFactory\Requetes\GetBy.cs" />
+    <Compile Include="SQLFactory\TypeFiltre.cs" />
     <Compile Include="SQLFactory\TypeRequete.cs" />
+    <Compile Include="TraceErreur.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

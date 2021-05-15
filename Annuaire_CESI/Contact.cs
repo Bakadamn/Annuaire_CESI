@@ -18,6 +18,16 @@ namespace Annuaire_CESI
         public string Service { get; set; }
         public DateTime DateEntree { get; set; }
 
-      
+        public Contact() { }
+        public Contact(string nom, string prenom, string telephone, string service, DateTime dateEntree)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Telephone = telephone;
+            Service = service;
+            DateEntree = dateEntree;
+        }
+
+
     }
 }

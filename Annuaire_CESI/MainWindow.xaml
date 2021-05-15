@@ -28,11 +28,18 @@
                     <Label Content="Filtre :"></Label>
                     <ComboBox x:Name="CBTypeFiltre" ></ComboBox>
                 </UniformGrid>
-                <TextBox x:Name="TBFiltre"></TextBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="TBFiltre" ></TextBox>
+                    <Button Grid.Column="1" x:Name="BtnRecherche" Content="Lancer recherche" Click="BtnRecherche_Click"></Button>
+                </Grid>
             </UniformGrid>
 
             <UniformGrid Grid.Row="1" Grid.Column="0" Columns="2" Height="30">
-                <Button Content="Ajouter un utilisateur"></Button>
+                <Button Content="Ajouter un utilisateur" Click="Button_Click"></Button>
                 <Button Content="Ajouter un utilisateur random (API)"></Button>
             </UniformGrid>
             
