@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Annuaire_CESI.SQLFactory.Requetes
 {
-    class Add : Requete
+    class Delete : Requete
     {
         private TypeRequete _typeRequete;
         private List<Contact> _resultatGet;
 
-        public Add(Contact contact)
+        public Delete(int IdASupprimer)
         {
             _typeRequete = TypeRequete.Get;
             using (ContexteSQL db = new ContexteSQL())
             {
-                db.Contact.Add(contact);
+                Contact aSupprimer = db.Contact.Where(x => x.ContactID == IdASupprimer).Single() ;
+                db.Contact.Remove(aSupprimer);
 
                 //Sauvegarde la database, sinon appelle TraceErreur si il y a une erreur (sauvegarde du message d'erreur)
                 string retour = db.Validation();
@@ -24,7 +27,9 @@ namespace Annuaire_CESI.SQLFactory.Requetes
                     TraceErreur.Log(retour);
 
 
+
                 _resultatGet = db.Contact.ToList<Contact>();
+
             }
         }
 

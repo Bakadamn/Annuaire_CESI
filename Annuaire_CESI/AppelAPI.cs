@@ -14,6 +14,8 @@ namespace Annuaire_CESI
         public static async Task<Contact> AppelApiAsync()
         {
             Contact contactRetour;
+
+            
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://api.randomuser.me");
@@ -30,11 +32,14 @@ namespace Annuaire_CESI
                     Telephone = nouvContact.results[0].phone,
                     DateEntree = nouvContact.results[0].registered.date,
                     Service = "Service"
-                    
+
                 };
 
             }
             return contactRetour;
+            
+            
+            
         }
 
         public class RootObject

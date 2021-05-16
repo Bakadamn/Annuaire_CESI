@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Annuaire_CESI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MinHeight="200" MinWidth="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -42,6 +42,19 @@
                 <Button Content="Ajouter un utilisateur" Click="BtnClickUtilisateur"></Button>
                 <Button Content="Ajouter un utilisateur random (API)" Click="BtnClickAPI"></Button>
             </UniformGrid>
+
+            <UniformGrid Grid.Row="0" Grid.Column="1" Columns="2" Rows="3">
+                <Label x:Name="LabelNom"></Label>
+                <Label x:Name="LabelPrenom"></Label>
+                <Label x:Name="LabelService"></Label>
+                <Label x:Name="LabelDate"></Label>
+            </UniformGrid>
+
+            <UniformGrid Grid.Row="1" Grid.Column="1" Columns="2" Height="30">
+                <Button Content="Modifier" Click="BtnModifierClick" ></Button>
+                <Button Content="Supprimer" Click="BtnSupprimerClick"></Button>
+            </UniformGrid>
+            
             
         </Grid>
 

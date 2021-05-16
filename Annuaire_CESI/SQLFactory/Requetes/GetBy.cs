@@ -13,19 +13,19 @@ namespace Annuaire_CESI.SQLFactory.Requetes
         public GetBy(TypeFiltre typeFiltre, string filtre)
         {
             _typeRequete = TypeRequete.GetBy;
-
+            
 
             using (ContexteSQL db = new ContexteSQL())
             {
 
                 if(typeFiltre==TypeFiltre.Nom)
-                _resultatGet = db.Contact.Where(x => x.Nom.Contains(filtre)).ToList<Contact>();
+                _resultatGet = db.Contact.Where(x => x.Nom.ToLower().Contains(filtre.ToLower())).ToList<Contact>();
 
                 else if(typeFiltre == TypeFiltre.Prenom)
-                _resultatGet = db.Contact.Where(x => x.Prenom.Contains(filtre)).ToList<Contact>();
+                _resultatGet = db.Contact.Where(x => x.Prenom.ToLower().Contains(filtre.ToLower())).ToList<Contact>();
 
                 else if (typeFiltre == TypeFiltre.Service)
-                _resultatGet = db.Contact.Where(x => x.Service.Contains(filtre)).ToList<Contact>();
+                _resultatGet = db.Contact.Where(x => x.Service.ToLower().Contains(filtre.ToLower())).ToList<Contact>();
 
 
             }

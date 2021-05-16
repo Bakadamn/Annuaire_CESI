@@ -110,19 +110,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AjoutContact.xaml.cs">
+      <DependentUpon>AjoutContact.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppelAPI.cs" />
     <Compile Include="ContexteSQL.cs" />
     <Compile Include="SQLFactory\Factorys\AddFactory.cs" />
+    <Compile Include="SQLFactory\Factorys\DeleteFactory.cs" />
     <Compile Include="SQLFactory\Factorys\GetByFactory.cs" />
     <Compile Include="SQLFactory\Factorys\GetFactory.cs" />
+    <Compile Include="SQLFactory\Factorys\ModifierFactory.cs" />
     <Compile Include="SQLFactory\Requete.cs" />
     <Compile Include="SQLFactory\RequeteFactory.cs" />
     <Compile Include="SQLFactory\Requetes\Add.cs" />
+    <Compile Include="SQLFactory\Requetes\Delete.cs" />
     <Compile Include="SQLFactory\Requetes\Get.cs" />
     <Compile Include="SQLFactory\Requetes\GetBy.cs" />
+    <Compile Include="SQLFactory\Requetes\Modifier.cs" />
     <Compile Include="SQLFactory\TypeFiltre.cs" />
     <Compile Include="SQLFactory\TypeRequete.cs" />
     <Compile Include="TraceErreur.cs" />
+    <Page Include="AjoutContact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

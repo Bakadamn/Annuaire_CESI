@@ -10,7 +10,8 @@ namespace Annuaire_CESI.SQLFactory
     {
         Get,
         GetBy,
-        Add
+        Add,
+        Delete
        
     }
 }

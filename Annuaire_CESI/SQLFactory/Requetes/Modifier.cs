@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Annuaire_CESI.SQLFactory.Requetes
 {
-    class Add : Requete
+    class Modifier : Requete
     {
         private TypeRequete _typeRequete;
         private List<Contact> _resultatGet;
-
-        public Add(Contact contact)
+       
+        public Modifier(Contact ContactAModifier)
         {
             _typeRequete = TypeRequete.Get;
             using (ContexteSQL db = new ContexteSQL())
             {
-                db.Contact.Add(contact);
+                var aSupprimer = db.Contact.Where(x => x.ContactID == ContactAModifier.ContactID).Single();
+
+                aSupprimer.Nom = ContactAModifier.Nom;
+                aSupprimer.Prenom = ContactAModifier.Prenom;
+                aSupprimer.Telephone = ContactAModifier.Telephone;
+                aSupprimer.Service = ContactAModifier.Service;
+                aSupprimer.DateEntree = ContactAModifier.DateEntree;
+                
+
 
                 //Sauvegarde la database, sinon appelle TraceErreur si il y a une erreur (sauvegarde du message d'erreur)
                 string retour = db.Validation();
@@ -24,7 +34,9 @@ namespace Annuaire_CESI.SQLFactory.Requetes
                     TraceErreur.Log(retour);
 
 
+
                 _resultatGet = db.Contact.ToList<Contact>();
+
             }
         }
 
@@ -37,7 +49,6 @@ namespace Annuaire_CESI.SQLFactory.Requetes
         {
             get { return _resultatGet; }
         }
-
 
     }
 }
