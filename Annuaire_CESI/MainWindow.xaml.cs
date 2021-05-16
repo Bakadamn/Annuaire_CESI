@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using Annuaire_CESI.SQLFactory;
 using Annuaire_CESI.SQLFactory.Factorys;
@@ -16,7 +17,7 @@ namespace Annuaire_CESI
         public MainWindow()
         {
             InitializeComponent();
-
+            
 
 
             //Ici on initialise la combobox afin qu'elle affiche tout les TypeFiltre qu'on a défini dans l'enum
@@ -86,11 +87,18 @@ namespace Annuaire_CESI
             RequeteSQL();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnClickUtilisateur(object sender, RoutedEventArgs e)
         {
             Contact contact = new Contact("bonjour","bonjour2","telephone","service de guerre", DateTime.Now);
             NouveauContact = contact;
             RequeteSQL();
+        }
+
+        private async void BtnClickAPI(object sender, RoutedEventArgs e)
+        {
+            NouveauContact = await AppelAPI.AppelApiAsync();
+            RequeteSQL();
+
         }
     }
 }

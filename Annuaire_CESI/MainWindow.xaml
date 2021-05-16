@@ -39,8 +39,8 @@
             </UniformGrid>
 
             <UniformGrid Grid.Row="1" Grid.Column="0" Columns="2" Height="30">
-                <Button Content="Ajouter un utilisateur" Click="Button_Click"></Button>
-                <Button Content="Ajouter un utilisateur random (API)"></Button>
+                <Button Content="Ajouter un utilisateur" Click="BtnClickUtilisateur"></Button>
+                <Button Content="Ajouter un utilisateur random (API)" Click="BtnClickAPI"></Button>
             </UniformGrid>
             
         </Grid>
