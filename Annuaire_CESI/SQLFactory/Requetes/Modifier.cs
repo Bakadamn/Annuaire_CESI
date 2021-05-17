@@ -11,18 +11,23 @@ namespace Annuaire_CESI.SQLFactory.Requetes
         private TypeRequete _typeRequete;
         private List<Contact> _resultatGet;
        
-        public Modifier(Contact ContactAModifier)
+        /// <summary>
+        /// Ici, contact a modifier est la nouvelle instance du contact, et IdModif sert a cibler le contact existant
+        /// </summary>
+        /// <param name="ContactAModifier"></param>
+        /// <param name="IdModif"></param>
+        public Modifier(Contact ContactAModifier, int IdModif)
         {
             _typeRequete = TypeRequete.Get;
             using (ContexteSQL db = new ContexteSQL())
             {
-                var aSupprimer = db.Contact.Where(x => x.ContactID == ContactAModifier.ContactID).Single();
+                var aModifier = db.Contact.Where(x => x.ContactID == IdModif).Single();
 
-                aSupprimer.Nom = ContactAModifier.Nom;
-                aSupprimer.Prenom = ContactAModifier.Prenom;
-                aSupprimer.Telephone = ContactAModifier.Telephone;
-                aSupprimer.Service = ContactAModifier.Service;
-                aSupprimer.DateEntree = ContactAModifier.DateEntree;
+                aModifier.Nom = ContactAModifier.Nom;
+                aModifier.Prenom = ContactAModifier.Prenom;
+                aModifier.Telephone = ContactAModifier.Telephone;
+                aModifier.Service = ContactAModifier.Service;
+                aModifier.DateEntree = ContactAModifier.DateEntree;
                 
 
 

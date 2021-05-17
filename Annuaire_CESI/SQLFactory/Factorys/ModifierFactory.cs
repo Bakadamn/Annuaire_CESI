@@ -9,13 +9,15 @@ namespace Annuaire_CESI.SQLFactory.Factorys
     class ModifierFactory : RequeteFactory
     {
         private Contact _contact;
-        public ModifierFactory(Contact contact)
+        private int _idModif;
+        public ModifierFactory(Contact contact, int idModif)
         {
             _contact = contact;
+            _idModif = idModif;
         }
         public override Requete CreerRequete()
         {
-            return new Requetes.Add(_contact);
+            return new Requetes.Modifier(_contact, _idModif);
         }
     }
 }

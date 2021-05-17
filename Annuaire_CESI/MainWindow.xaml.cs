@@ -16,6 +16,7 @@ namespace Annuaire_CESI
         private Contact ContactSelectionne;
         private Contact ContactModifie;
         private int IdASupprimer = -1;
+        private int IdAModifier = -1;
 
 
         public MainWindow()
@@ -104,18 +105,28 @@ namespace Annuaire_CESI
             }
         }
 
-
+        /// <summary>
+        /// Bouton pour supprimer le contact selectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSupprimerClick(object sender, RoutedEventArgs e)
         {
             IdASupprimer = ContactSelectionne.ContactID;
             RequeteSQL();
             
         }
-
+        /// <summary>
+        /// Bouton pour modifier le contact selectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnModifierClick(object sender, RoutedEventArgs e)
         {
             AjoutContact fenetreAjoutContact = new AjoutContact(ContactSelectionne);
             fenetreAjoutContact.ShowDialog();
+
+            IdAModifier = ContactSelectionne.ContactID;
 
             if (fenetreAjoutContact.ContactCree != null)
                 ContactModifie = fenetreAjoutContact.ContactCree;
@@ -127,6 +138,7 @@ namespace Annuaire_CESI
         /// <summary>
         /// La fonction qui appelle les factorys SQL 
         /// "simule" une situation dans laquelle utiliser le design pattern Factory
+        /// Les factorys et les requetes qu'elles instancient se trouvent dans le dossier "SQLFactory"
         /// </summary>
         private void RequeteSQL()
         {
@@ -150,8 +162,9 @@ namespace Annuaire_CESI
             //si ContactModifie != null alors on modifie le contact (modifier)
             else if (ContactModifie!=null)
             {
-                factory = new ModifierFactory(ContactModifie);
+                factory = new ModifierFactory(ContactModifie, IdAModifier);
                 ContactModifie = null;
+                IdAModifier = -1;
             }
             // si il y a un filtre ajouter alors on recherche avec filtre (getBy)
             else if (typeFiltre != TypeFiltre.Aucun && CBTypeFiltre.SelectedItem != null) 
@@ -164,6 +177,7 @@ namespace Annuaire_CESI
                 factory = new GetFactory();
             }
 
+            //Ici on instancie la requete dont on a besoin
             Requete requete = factory.CreerRequete();
             DataGridCommande.ItemsSource = requete.ResultatGet;
         }
